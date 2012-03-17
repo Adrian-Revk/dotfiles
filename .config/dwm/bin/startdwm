@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Power Manager
+xfce4-power-manager &
+
+# Wicd
+wicd-gtk &
+
+# Wallpaper
+sh ~/.fehbg &
+
+# Composite
+(sleep 1s && xcompmgr) &
+
+# trayer
+#(sleep 2s && trayer --expand true --widthtype request --transparent true --alpha 230 --edge top --align right --height 15) &
+
+# status (none, using conky)
+xsetroot -name " "
+
+# conky status
+#(sleep 2s && conky | dzen2 -e '' -fg '#737373' -bg '#262626' -ta r -fn '-*-envy code r-medium-r-*-*-10-*-*-*-*-*-*-*' -p -x '1040' -w '400' -h '15') &
+
+# DWM
+while true; do
+    dwm || exit
+done

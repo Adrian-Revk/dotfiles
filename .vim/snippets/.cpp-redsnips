@@ -1,0 +1,60 @@
+snippet #head
+	/********************************************************************
+		created:	`system("date +%x")`
+		filename: 	`system("pwd")``"/".Filename().".hpp"`
+		author:		${1}
+
+		purpose:	${2}
+
+	*********************************************************************/
+
+	${3}
+snippet name red
+	namespace red {
+		${1}
+	}
+snippet name red::ui
+	namespace red {
+		namespace ui {
+			${1}
+		}
+	}
+snippet lua class
+	${2}
+	class Lua${1:name} {
+	public:
+		Lua$1(lua_State* L) { }
+		~Lua$1() { } 
+
+		static const char className[];
+		const Lunar<Lua$1>::RegType methods[];
+
+	private:
+	};
+
+	const char Lua$1::className[] = "Lua$1";
+	Lunar<Lua$1>::RegType Lua$1::methods[] = {
+		
+		{ 0 }
+	};
+snippet lua function
+	int ${1}(lua_State* L){
+		${2}
+		return 0;
+	}
+snippet // @param
+	/// @param ${1} : ${2}
+snippet // inline com
+	///< ${1}
+snippet // @return
+	/// @return : ${1}
+snippet class
+	${2}
+	class REDAPI ${1:name} {
+	public:
+		$1();
+		~$1() {}
+		${3}
+	private:
+		
+	};

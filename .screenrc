@@ -1,0 +1,26 @@
+#begin with window 1
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10    
+
+# URxvt 256 colors
+term screen-256color
+terminfo rxvt-unicode 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# Statusbar
+hardstatus off
+hardstatus alwayslastline 
+hardstatus string "%{= d}%{r}screen%{k}%H %{r}>> %{k}${USER}%{k}@%{k}%H: %L>%1`%? %?%{.g}%u%? %-18=%?%{m} %{k}%-=%{k}%-w%{r}%n %t%{k}%+w %{k}|%C"
+
+# Do not show startup message
+startup_message off
+
+# To clear the screen after closing some programs
+altscreen on
+
+#vbell off
+#utf8 on
+
+# Windows opening by default
+screen -t "dev" 2
+screen -t "bash" 1
