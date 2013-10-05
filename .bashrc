@@ -27,7 +27,8 @@ function parse_git_branch {
 }
 
 
-export PS1="$NOIR» ${JAUNE}rev${NOIR}${GRAS}╺─╸($NORM$JAUNE\W$NOIR$GRAS)$NORM$CYAN\$(parse_git_branch)  $NORM"
+export PS1="\[$(tput setaf 1)\]┌─╼ \[$(tput setaf 2)\][\w]\n\[$(tput setaf 1)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 1)\]└────╼\"; else echo \"\[$(tput setaf 1)\]└╼\"; fi) \[$(tput setaf 2)\]"
+#export PS1="$NOIR» ${JAUNE}rev${NOIR}${GRAS}╺─╸($NORM$JAUNE\W$NOIR$GRAS)$NORM$CYAN\$(parse_git_branch)  $NORM"
 #export PS1="$BLANC($VERT\w$BLANC)\$(parse_git_branch)$NORM "
 
 setterm -blength 0
@@ -36,8 +37,8 @@ setterm -blength 0
 	#===BASE===#
 		alias s='sudo'
 		alias cdC='cd /mnt/C'
-		alias cdData='cd /mnt/D'
-		alias cddev='cd /mnt/D/dev'
+		alias cdData='cd /mnt/Data'
+		alias cddev='cd /mnt/Data/dev'
 		alias ls='ls --color=auto'
 		alias la='ls -a'
 		alias ll='ls -lh'
@@ -84,6 +85,14 @@ setterm -blength 0
 		alias emuses='equery uses'
 		alias emrm='sudo emerge -avc'
 		alias emclean='sudo eclean'
+
+    #===APTITUDE===#
+        alias aptin='sudo apt-get install'
+        alias aptrm='sudo apt-get remove'
+        alias aptsrc='apt-cache search'
+        alias aptupdate='sudo apt-get update'
+        alias aptupgrade='sudo apt-get upgrade'
+        alias aptdupgrade='sudo apt-get dist-upgrade'
 
 	#===PACMAN===#
 		alias pacupdate='yaourt -Sy'
@@ -138,7 +147,7 @@ setterm -blength 0
     }
 
     #Extractor X
-    x (){
+    extract (){
       if [ -f $1 ] ; then
         case $1 in
           *.tar.bz2)   tar xjf $1   ;;
@@ -153,7 +162,7 @@ setterm -blength 0
           *.zip)       unzip $1     ;;
           *.Z)         uncompress $1;;
           *.7z)        7z x $1      ;;
-          *)           echo "'$1' cannot be extracted via ex()" ;;
+          *)           echo "'$1' cannot be extracted via extract()" ;;
         esac
       else
         echo "'$1' is not a valid file"
@@ -182,11 +191,18 @@ setterm -blength 0
 	  fi
     }
 
-	
-	#Calculatrice
-	function calc (){
-		echo "scale=5; $1" | bc
-	}
+    # Color man pages
+    man() {
+        env \
+            LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+            LESS_TERMCAP_md=$(printf "\e[1;31m") \
+            LESS_TERMCAP_me=$(printf "\e[0m") \
+            LESS_TERMCAP_se=$(printf "\e[0m") \
+            LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+            LESS_TERMCAP_ue=$(printf "\e[0m") \
+            LESS_TERMCAP_us=$(printf "\e[1;32m") \
+                man "$@"
+    }
 
 
 
@@ -194,9 +210,9 @@ export EDITOR=vim
 export SVN_EDITOR=vim
 export LD_LIBRARY_PATH=.
 
-export LANGUAGE=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+#export LANGUAGE=en_US.UTF-8
+#export LANG=en_US.UTF-8
+#export LC_ALL=en_US.UTF-8
 
 if [ -n "$DISPLAY" ]; then
      BROWSER=chromium

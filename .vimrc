@@ -1,13 +1,13 @@
 " GUI
-set gfn=Envy\ Code\ R\ 8
+set gfn=Ohsnap\ 11
 set go=aegm
 set guicursor=a:blinkon0 "n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor-blinkon0,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
 
-" Couleurs
+" Colors
 set t_Co=256
 syntax on
-colorscheme red-v3
+colorscheme classytouch "red-v3
 
 " Enable plugins
 set nocp
@@ -47,10 +47,17 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set undofile
+set nobackup
+set nowritebackup
 
 set ignorecase
 set smartcase
 
+set backupdir=~/.vimtmp,/tmp
+set noswapfile
+
+" line separation appearance
+set fillchars+=vert:\.
 
 " Commands
 command CDDEV cd /mnt/D/dev
@@ -92,9 +99,9 @@ set completeopt=menu
 
 " Map
 " F1 To Open NERDTree
-map <F1> :NERDTreeToggle<CR>
+map <silent> <F2> :NERDTreeToggle<CR>
 " F2 To VimCommander
-map <silent> <F2> :cal VimCommanderToggle()<CR>
+" map <silent> <F2> :cal VimCommanderToggle()<CR>
 " F12 To rebuild local CTAGS Database
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 " Ctrl-X F12 To rebuild global CTAGS Database
