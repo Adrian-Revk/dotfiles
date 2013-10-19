@@ -1,6 +1,6 @@
 let g:colors_name = "classytouch"
 
-hi Normal                  ctermfg=6
+hi Normal                  ctermfg=10
 hi Boolean                 ctermfg=13
 hi Comment                 ctermfg=0    ctermbg=none  cterm=none
 hi Conditional             ctermfg=1
@@ -35,9 +35,9 @@ hi Macro                   ctermfg=1
 hi MatchParen              ctermfg=7   ctermbg=none cterm=bold
 hi ModeMsg                 ctermfg=1
 hi MoreMsg                 ctermfg=1
-hi NonText                 ctermfg=0  ctermbg=0 
+hi NonText                 ctermfg=0  ctermbg=none
 hi Number                  ctermfg=13
-hi Operator                ctermfg=4 cterm=bold
+hi Operator                ctermfg=15 cterm=none
 hi PreCondit               ctermfg=1  cterm=none
 hi PreProc                 ctermfg=1
 hi Question                ctermfg=1
@@ -57,7 +57,7 @@ hi Todo                    ctermfg=1  ctermbg=0
 hi Typedef                 ctermfg=1
 hi Type                    ctermfg=13
 hi Underlined              ctermfg=0 ctermbg=none
-hi VertSplit               ctermfg=9  ctermbg=0 cterm=none
+hi VertSplit               ctermfg=9  ctermbg=none cterm=none
 hi Visual                  ctermfg=1 ctermbg=235
 hi VisualNOS               ctermfg=1  ctermbg=235  cterm=bold
 hi WarningMsg              ctermfg=1   

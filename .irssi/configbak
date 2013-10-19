@@ -1,11 +1,8 @@
 servers = (
-  {
-    address = "irc.thefear.ca";
-    chatnet = "Rizon";
+  { 
+    address = "irc.undernet.org";
+    chatnet = "Undernet";
     port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
-    autoconnect = "yes";
   },
   {
     address = "irc.boxbox.org";
@@ -16,16 +13,8 @@ servers = (
     autoconnect = "yes";
   },
   {
-    address = "irc.freenode.net";
-    chatnet = "Freenode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
-    autoconnect = "yes";
-  },
-  {
-    address = "irc.quakenet.org";
-    chatnet = "Quakenet";
+    address = "irc.thefear.ca";
+    chatnet = "Rizon";
     port = "6667";
     use_ssl = "no";
     ssl_verify = "no";
@@ -34,29 +23,20 @@ servers = (
 );
 
 chatnets = {
+  Undernet = {
+    type = "IRC";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
   Boxbox = {
     type = "IRC";
-    autosendcmd = "/^msg Nickserv identify 4louje_0irc0;wait 1000";
+    autosendcmd = "/^msg nickserv identify 4louje_0irc0;wait 2000;/nicklist fifo";
   };
-  Rizon = {
-    type = "IRC";
-    autosendcmd = "/^msg nickserv identify 4louje_0irc0;wait 1000";
-  };
-  Freenode = {
-    type = "IRC";
-    autosendcmd = "/^msg nickserv identify 4louje_0irc0;wait 1000";
-  };
-  Quakenet = { type = "IRC"; };
+  Rizon = { type = "IRC"; };
 };
 
-channels = (
-  { name = "#SDL"; chatnet = "Freenode"; autojoin = "yes"; },
-  { name = "#sfml"; chatnet = "Boxbox"; autojoin = "yes"; },
-  { name = "#/g/sicp"; chatnet = "Rizon"; autojoin = "yes"; },
-  { name = "#/g/amedev"; chatnet = "Rizon"; autojoin = "yes"; },
-  { name = "#rgrd"; chatnet = "Quakenet"; autojoin = "yes"; },
-  { name = "#openmw"; chatnet = "Freenode"; autojoin = "yes"; }
-);
+channels = ( );
 
 aliases = {
   J = "join";
@@ -167,6 +147,7 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
+        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
@@ -226,47 +207,16 @@ statusbar = {
   };
 };
 settings = {
-  core = {
-    real_name = "Adrian Revk";
-    user_name = "revk";
-    nick = "radr";
-    timestamp_format = "%H:%M:00";
-  };
-  "fe-text" = {
-    actlist_sort = "refnum";
-    term_force_colors = "yes";
-    autostick_split_windows = "yes";
-  };
+  core = { real_name = "Adrian Revk"; user_name = "AR"; nick = "radr"; };
+  "fe-text" = { actlist_sort = "refnum"; term_force_colors = "yes"; };
   "fe-common/core" = {
-    autolog = "yes";
-    autoclose_windows = "no";
-    reuse_unused_windows = "yes";
-    windows_auto_renumber = "no";
-    print_active_channel = "yes";
-    beep_when_window_active = "yes";
-    beep_when_away = "yes";
-    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
-    bell_beeps = "yes";
+    theme = "sprunge";
     autocreate_own_query = "no";
-    use_status_window = "yes";
-    use_msgs_window = "no";
-    autocreate_query_level = "MSGS";
-    autolog_path = "~/.irssi/logs/%Y/$tag/$0.%m-%d.log";
-    theme = "theirssithing";
+    autocreate_query_level = "DCCMSGS";
+    use_status_window = "no";
+    use_msgs_window = "yes";
   };
-  "perl/core/scripts" = {
-    awl_display_key = "$Q|%n$H$C$S";
-    awl_block = "-14";
-    awl_display_key_active = "$Q|%n$H%9$C%n$S";
-    awl_display_nokey = "[$N]$H$C$S";
-    nicklist_automode = "SCREEN";
-  };
+  "irc/core" = { alternate_nick = "radr_"; };
+  "perl/core/scripts" = { nicklist_width = "10"; nicklist_height = "80"; };
 };
-hilights = ( { text = "radr"; nick = "yes"; word = "yes"; } );
-keyboard = (
-  { key = "^up"; id = "command"; data = "nicklist scroll -10"; },
-  { key = "^down"; id = "command"; data = "nicklist scroll +10"; },
-  { key = "^."; id = "command"; data = "nicklist scroll -10"; },
-  { key = "^,"; id = "command"; data = "nicklist scroll +10"; }
-);
-logs = { };
+hilights = ( { text = "araiy"; nick = "yes"; word = "yes"; } );

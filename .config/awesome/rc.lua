@@ -67,6 +67,7 @@ modkey     = "Mod1"
 terminal   = "xfce4-terminal" or "urxvtc" or "xterm"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
+my_path    = awful.util.getdir("config") .. "/../.."
 
 -- user defined
 browser    = "firefox"
@@ -93,7 +94,7 @@ local layouts = {
 -- {{{ Tags
 tags = {
     names = { "start", "2", "3", "4", "5" },
-    layout = { layouts[1], layouts[3], layouts[3], layouts[1], layouts[1] }
+    layout = { layouts[1], layouts[1], layouts[3], layouts[1], layouts[1] }
 }
 for s = 1, screen.count() do
    tags[s] = awful.tag(tags.names, s, tags.layout)
@@ -273,6 +274,25 @@ volicon:buttons (awful.util.table.join (
       end)
 ))
 
+-- keyboard map indicator/changer
+kbdch = {}
+kbdch.cmd = "setxkbmap"
+kbdch.layout = { { "us", "" }, { "ca", "fr" } }
+kbdch.current = 1
+kbdch.widget = wibox.widget.textbox()
+kbdch.widget:set_text(" " .. kbdch.layout[kbdch.current][1] .. " ")
+kbdch.switch = function()
+    kbdch.current = 1 + kbdch.current % #(kbdch.layout)
+    local t = kbdch.layout[kbdch.current]
+    kbdch.widget:set_text(" " .. t[1] .. " ")
+    os.execute(kbdch.cmd .. " " .. t[1] .. " " .. t[2])
+end
+
+-- Mouse bindings
+kbdch.widget:buttons(
+    awful.util.table.join(awful.button({}, 1, function() kbdch.switch() end))
+)
+
 -- Weather
 --yawn = lain.widgets.yawn(123456)
 
@@ -365,6 +385,8 @@ for s = 1, screen.count() do
     right_layout:add(mpdicon)
     right_layout:add(mpdwidget)
     --right_layout:add(mailwidget)
+    right_layout:add(kbdch.widget)
+    right_layout:add(bar_spr)
     right_layout:add(baticon)
     right_layout:add(batwidget)
     right_layout:add(bar_spr)
@@ -388,9 +410,9 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
+    --awful.button({ }, 4, awful.tag.viewnext),
+    --awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 
@@ -398,7 +420,12 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     -- Take a screenshot
     -- https://github.com/copycat-killer/dots/blob/master/bin/screenshot
-    --awful.key({ altkey }, "p", function() os.execute("screenshot") end),
+    awful.key({ }, "Print", function() 
+        awful.util.spawn(my_path .. "/bin/capscr",false) 
+    end),
+
+    -- Switch keyboard layout
+    awful.key({ modkey }, "Shift_L", function() kbdch.switch() end),
 
     -- Tag browsing
     awful.key({ modkey }, "Left",   awful.tag.viewprev       ),
@@ -595,15 +622,15 @@ for i = 1, 9 do
                            awful.tag.viewonly(tag)
                         end
                   end),
+--        awful.key({ modkey, "Control" }, "#" .. i + 9,
+--                  function ()
+--                      local screen = mouse.screen
+--                      local tag = awful.tag.gettags(screen)[i]
+--                      if tag then
+--                         awful.tag.viewtoggle(tag)
+--                      end
+--                  end),
         awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = mouse.screen
-                      local tag = awful.tag.gettags(screen)[i]
-                      if tag then
-                         awful.tag.viewtoggle(tag)
-                      end
-                  end),
-        awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
                       local tag = awful.tag.gettags(client.focus.screen)[i]
                       if client.focus and tag then
@@ -653,12 +680,12 @@ awful.rules.rules = {
     { rule = { instance = "plugin-container" },
           properties = { tag = tags[1][1] } },
 
-	  { rule = { class = "Gimp" },
-     	    properties = { tag = tags[1][3] } },
-
     { rule = { class = "Gimp", role = "gimp-image-window" },
-          properties = { maximized_horizontal = true,
+          properties = { tag = tags[1][2],
+                         maximized_horizontal = true,
                          maximized_vertical = true } },
+    { rule = { class = "Skype" },
+            properties = { tag = tags[1][4] } }
 }
 -- }}}
 

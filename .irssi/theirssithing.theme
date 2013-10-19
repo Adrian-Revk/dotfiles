@@ -176,7 +176,7 @@ abstracts = {
 
   # default background for all statusbars. You can also give
   # the default foreground color for statusbar items.
-  sb_background = "%1";
+  sb_background = "%0%w";
 
   # default backround for "default" statusbar group
   #sb_default_bg = "%4";
@@ -194,17 +194,17 @@ abstracts = {
   # used for anything.
   sbend = " ";
 
-  topicsbstart = "%BChannel: %b\"$*";
-  topicsbend = "$*%b\"";
+  topicsbstart = "%wChannel: %R\"%n$*";
+  topicsbend = "$*%R\"";
 
   prompt = " %r$* »%n ";
   # prompt = " %K└╼ ";
 
   sb = "[$*]";
-  sbmode = " %n[%g%g+%n$*%n]";
-  sbaway = " %g/* zZzZ */%n";
-  sbservertag = ":%g$0%n";
-  sbnickmode = "$0";
+  sbmode = " %n[%r+%C$*%n]";
+  sbaway = " %C/* zZzZ */%n";
+  sbservertag = ":%B$0%n";
+  sbnickmode = "$K";
 
   # Usercount
   sb_usercount = "{sb %_$0%_ nicks ($1-)}";
@@ -219,9 +219,9 @@ abstracts = {
   # ',' separator
   sb_act_sep = " ";
   # normal text
-  sb_act_text = "%W%9$*%n";
+  sb_act_text = "%R$*%n";
   # public message
-  sb_act_msg = "%Y%9$*%n";
+  sb_act_msg = "%B$*%n";
   # hilight
   sb_act_hilight = "%M%9$*%n";
   # hilight with specified color, $0 = color, $1 = text
