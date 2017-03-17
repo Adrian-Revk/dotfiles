@@ -15,6 +15,11 @@ hi Comment guifg=#444444 guibg=#121212 guisp=#121212 gui=NONE ctermfg=0 ctermbg=
 hi Normal guifg=#5f5f5f guibg=#080808 guisp=#080808 gui=NONE ctermfg=243 ctermbg=NONE cterm=NONE
 hi LineNr guifg=#262626 guibg=#080808 guisp=#080808 gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
 
+hi PMenu guifg=#828282 guibg=#242424 guisp=#242424 gui=NONE ctermfg=8 ctermbg=242 cterm=NONE
+hi PMenuSel guifg=#000000 guibg=#545454 guisp=#545454 gui=NONE ctermfg=NONE ctermbg=255 cterm=NONE
+hi PMenuThumb guifg=NONE guibg=#af87ff guisp=#af87ff gui=NONE ctermfg=NONE ctermbg=141 cterm=NONE
+hi PMenuSbar guifg=NONE guibg=#262626 guisp=#262626 gui=NONE ctermfg=NONE ctermbg=215 cterm=NONE
+
 hi IncSearch guifg=#af5f5f guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
 hi WildMenu guifg=#d7ffd7 guibg=NONE guisp=NONE gui=NONE ctermfg=194 ctermbg=NONE cterm=NONE
 "hi SignColumn -- no settings --
@@ -33,7 +38,6 @@ hi DiffText guifg=#ffafaf guibg=#3a3a3a guisp=#3a3a3a gui=NONE ctermfg=217 cterm
 hi ErrorMsg guifg=#918d7d guibg=NONE guisp=NONE gui=NONE ctermfg=101 ctermbg=NONE cterm=NONE
 "hi Ignore -- no settings --
 hi Debug guifg=#d7afaf guibg=NONE guisp=NONE gui=NONE ctermfg=181 ctermbg=NONE cterm=NONE
-hi PMenuSbar guifg=NONE guibg=#262626 guisp=#262626 gui=NONE ctermfg=NONE ctermbg=235 cterm=NONE
 hi Identifier guifg=#87afd7 guibg=NONE guisp=NONE gui=NONE ctermfg=110 ctermbg=NONE cterm=NONE
 hi SpecialChar guifg=#00afff guibg=NONE guisp=NONE gui=NONE ctermfg=33 ctermbg=NONE cterm=NONE
 hi Conditional guifg=#87afd7 guibg=NONE guisp=NONE gui=NONE ctermfg=110 ctermbg=NONE cterm=NONE
@@ -43,7 +47,6 @@ hi Special guifg=#af87d7 guibg=NONE guisp=NONE gui=NONE ctermfg=140 ctermbg=NONE
 hi StatusLine guifg=#1c1c1c guibg=#5f5f5f guisp=#5f5f5f gui=NONE ctermfg=234 ctermbg=59 cterm=NONE
 hi Label guifg=#d7d7af guibg=NONE guisp=NONE gui=NONE ctermfg=13 ctermbg=NONE cterm=NONE
 "hi CTagsImport -- no settings --
-hi PMenuSel guifg=#000000 guibg=#545454 guisp=#545454 gui=NONE ctermfg=NONE ctermbg=240 cterm=NONE
 hi Search guifg=#ff6060 guibg=NONE guisp=NONE gui=NONE ctermfg=9 ctermbg=NONE cterm=NONE
 "hi CTagsGlobalVariable -- no settings --
 hi Delimiter guifg=#87afaf guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE cterm=NONE
@@ -80,13 +83,11 @@ hi DiffChange guifg=NONE guibg=#303030 guisp=#303030 gui=NONE ctermfg=NONE cterm
 hi Cursor guifg=#121212 guibg=#87afaf guisp=#87afaf gui=NONE ctermfg=233 ctermbg=109 cterm=NONE
 "hi SpellLocal -- no settings --
 hi Error guifg=#ff40ff guibg=#1c1c1c guisp=#1c1c1c gui=NONE ctermfg=13 ctermbg=234 cterm=NONE
-hi PMenu guifg=#828282 guibg=#242424 guisp=#242424 gui=NONE ctermfg=8 ctermbg=235 cterm=NONE
 hi SpecialKey guifg=#afd7af guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
 hi Constant guifg=#9c7f9c guibg=NONE guisp=NONE gui=NONE ctermfg=247 ctermbg=NONE cterm=NONE
 "hi DefinedName -- no settings --
 hi Tag guifg=#00ff00 guibg=NONE guisp=NONE gui=NONE ctermfg=10 ctermbg=NONE cterm=NONE
 hi String guifg=#afd700 guibg=NONE guisp=NONE gui=NONE ctermfg=1 ctermbg=NONE cterm=NONE
-hi PMenuThumb guifg=NONE guibg=#af87ff guisp=#af87ff gui=NONE ctermfg=NONE ctermbg=141 cterm=NONE
 hi MatchParen cterm=bold ctermbg=NONE ctermfg=15
 "hi LocalVariable -- no settings --
 hi Repeat guifg=#87afd7 guibg=NONE guisp=NONE gui=NONE ctermfg=110 ctermbg=NONE cterm=NONE
