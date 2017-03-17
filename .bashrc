@@ -27,11 +27,10 @@ function parse_git_branch {
 }
 
 
-export PS1="\[$(tput setaf 1)\]┌─╼ \[$(tput setaf 2)\][\w]\n\[$(tput setaf 1)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 1)\]└────╼\"; else echo \"\[$(tput setaf 1)\]└╼\"; fi) \[$(tput setaf 2)\]"
+#export PS1="\[$(tput setaf 5)\]┌─╼ \[$(tput setaf 4)\][\w]\n\[$(tput setaf 5)\]\[$(tput setaf 5)\]└────╼ \[$(tput setaf 9)\]"
+export PROMPT_COMMAND='__posh_git_ps1 "\[$(tput setaf 5)\]┌─╼ \[$(tput setaf 4)\][\w]" "\n\[$(tput setaf 5)\]\[$(tput setaf 5)\]└────╼ \[$(tput setaf 9)\] ";'$PROMPT_COMMAND
 #export PS1="$NOIR» ${JAUNE}rev${NOIR}${GRAS}╺─╸($NORM$JAUNE\W$NOIR$GRAS)$NORM$CYAN\$(parse_git_branch)  $NORM"
 #export PS1="$BLANC($VERT\w$BLANC)\$(parse_git_branch)$NORM "
-
-setterm -blength 0
 
 #===ALIASES===#
 	#===BASE===#
@@ -73,7 +72,7 @@ setterm -blength 0
         alias tmuxrad='tmux -2 attach -t'
 
 	#===PERSO===#
-		alias mine='sudo chown -hR revk:revk'
+		alias mine='sudo chown -hR adrien:adrien'
 		alias proc='ps | grep -i'
 		alias mntiso='sudo mount -o loop -t iso9660'
 		alias wall='feh --bg-scale'
@@ -217,4 +216,8 @@ export LD_LIBRARY_PATH=.
 if [ -n "$DISPLAY" ]; then
      BROWSER=chromium
 fi
-export PATH=~/bin:$PATH
+
+export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
+
+# bash git support
+source ~/.git-prompt.sh

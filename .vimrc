@@ -3,7 +3,6 @@ set gfn=Ohsnap\ 11
 set go=aegm
 set guicursor=a:blinkon0 "n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor-blinkon0,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
 
-
 " Colors
 set t_Co=256
 syntax on
@@ -11,6 +10,9 @@ colorscheme red-v3 "classytouch
 
 " Enable plugins
 set nocp
+
+" no undo file
+set noundofile
 
 " Filetype stuff On
 filetype plugin on
@@ -69,7 +71,7 @@ set formatoptions=tqrn1
 " Backup files
 "set nobackup
 "set nowritebackup
-set undofile
+"set undofile
 set backupdir=~/.tmp/.vim,/tmp
 set directory=~/.tmp/.vim,/tmp
 set noswapfile
