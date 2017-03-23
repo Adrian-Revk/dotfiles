@@ -77,13 +77,14 @@ set directory=~/.tmp/.vim,/tmp
 set noswapfile
 
 " Change leader key
-
+let mapleader="\`"
 
 " line separation appearance
 set fillchars+=vert:\.
 
 " Commands
-command CDDEV cd /mnt/D/dev
+"command CDDEV cd /mnt/D/dev
+command CDC cd %:p:h
 
 
 " Use rainbow parenthesis for lisp editing
@@ -126,15 +127,17 @@ au BufRead,BufNewFile *.go set filetype=go
 let NERDTreeIgnore=['\.o$', '\~$', 'tags']
 
 " OmniCPP Options
+set omnifunc=syntaxcomplete#Complete
 let OmniCpp_NamespaceSearch = 2     " search namespace in this and included files
 let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 0
+let OmniCpp_ShowAccess = 1
 let OmniCpp_ShowPrototypeInAbbr = 1 " show func prototype
 let OmniCpp_SelectFirstItem = 2     " select first opt but dont insert
 let OmniCpp_MayCompleteDot = 1      " autocomplete .
 let OmniCpp_MayCompleteArrow = 1    " autocomplete ->
 let OmniCpp_MayCompleteScope = 1    " autocomplete ::
-set completeopt=menu
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+set completeopt=menuone
 
 " Map
 " F1 To Open NERDTree
@@ -142,7 +145,7 @@ map <silent> <F2> :NERDTreeToggle<CR>
 " F2 To VimCommander
 " map <silent> <F2> :cal VimCommanderToggle()<CR>
 " F12 To rebuild local CTAGS Database
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " Ctrl-X F12 To rebuild global CTAGS Database
 map <C-x><F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/.vim/tags/commontags /usr/include /usr/local/include <CR><CR>
 
