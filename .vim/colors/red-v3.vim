@@ -11,15 +11,22 @@ endif
 set t_Co=256
 let g:colors_name = "red-v3"
 
-hi Comment guifg=#444444 guibg=#121212 guisp=#121212 gui=NONE ctermfg=0 ctermbg=NONE cterm=NONE
+hi Comment guifg=#444444 guibg=#121212 guisp=#121212 gui=NONE ctermfg=238 ctermbg=NONE cterm=NONE
 hi Normal guifg=#5f5f5f guibg=#080808 guisp=#080808 gui=NONE ctermfg=243 ctermbg=NONE cterm=NONE
+hi Number guifg=#af87ff guibg=NONE guisp=NONE gui=NONE ctermfg=141 ctermbg=NONE cterm=NONE
+hi Float guifg=#af87ff guibg=NONE guisp=NONE gui=NONE ctermfg=141 ctermbg=NONE cterm=NONE
+hi Boolean guifg=#ff6060 guibg=NONE guisp=NONE gui=NONE ctermfg=203 ctermbg=NONE cterm=NONE
 hi LineNr guifg=#262626 guibg=#080808 guisp=#080808 gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
 hi Type guifg=#878787 guibg=NONE guisp=NONE gui=NONE ctermfg=250 ctermbg=NONE cterm=NONE
 hi StorageClass guifg=#b2b2b2 guibg=NONE guisp=NONE gui=NONE ctermfg=250 ctermbg=NONE cterm=NONE
 hi Visual ctermbg=235
 
-hi PreProc guifg=#767676 guibg=NONE guisp=NONE gui=NONE ctermfg=4 ctermbg=NONE cterm=NONE
-hi PreCondit guifg=#767676 guibg=NONE guisp=NONE gui=NONE ctermfg=4 ctermbg=NONE cterm=NONE
+hi PreProc guifg=#767676 guibg=NONE guisp=NONE gui=NONE ctermfg=101 ctermbg=NONE cterm=NONE
+hi PreCondit guifg=#767676 guibg=NONE guisp=NONE gui=NONE ctermfg=101 ctermbg=NONE cterm=NONE
+hi Include guifg=#767676 guibg=NONE guisp=NONE gui=NONE ctermfg=101 ctermbg=NONE cterm=NONE
+hi Define guifg=#afd7d7 guibg=NONE guisp=NONE gui=NONE ctermfg=101 ctermbg=NONE cterm=NONE
+"hi DefinedName guifg=#afd7d7 guibg=NONE guisp=NONE gui=NONE ctermfg=101 ctermbg=NONE cterm=NONE
+hi Macro guifg=#afd7d7 guibg=NONE guisp=NONE gui=NONE ctermfg=101 ctermbg=NONE cterm=NONE
 
 hi Search guifg=#ff6060 guibg=NONE guisp=NONE gui=NONE ctermfg=198 ctermbg=NONE cterm=NONE
 hi IncSearch guifg=#af5f5f guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
@@ -35,7 +42,6 @@ hi SpecialComment guifg=#87af87 guibg=NONE guisp=NONE gui=NONE ctermfg=108 cterm
 hi Typedef guifg=#dadada guibg=NONE guisp=NONE gui=NONE ctermfg=253 ctermbg=NONE cterm=NONE
 hi Title guifg=#c0c0c0 guibg=NONE guisp=NONE gui=NONE ctermfg=7 ctermbg=NONE cterm=NONE
 hi Folded guifg=#444444 guibg=#1c1c1c guisp=#1c1c1c gui=NONE ctermfg=238 ctermbg=234 cterm=NONE
-hi Include guifg=#767676 guibg=NONE guisp=NONE gui=NONE ctermfg=4 ctermbg=NONE cterm=NONE
 "hi TabLineSel -- no settings --
 hi StatusLineNC guifg=#8787af guibg=#1c1c1c guisp=#1c1c1c gui=NONE ctermfg=103 ctermbg=234 cterm=NONE
 "hi CTagsMember -- no settings --
@@ -59,10 +65,7 @@ hi Statement guifg=#8787af guibg=NONE guisp=NONE gui=NONE ctermfg=103 ctermbg=NO
 "hi SpellRare -- no settings --
 "hi EnumerationValue -- no settings --
 hi Character guifg=#00afd7 guibg=NONE guisp=NONE gui=NONE ctermfg=38 ctermbg=NONE cterm=NONE
-hi Float guifg=#af87ff guibg=NONE guisp=NONE gui=NONE ctermfg=145 ctermbg=NONE cterm=NONE
-hi Number guifg=#af87ff guibg=NONE guisp=NONE gui=NONE ctermfg=145 ctermbg=NONE cterm=NONE
-hi Boolean guifg=#ff6060 guibg=NONE guisp=NONE gui=NONE ctermfg=9 ctermbg=NONE cterm=NONE
-hi Operator guifg=#00afd7 guibg=NONE guisp=NONE gui=NONE ctermfg=11 ctermbg=NONE cterm=NONE
+hi Operator guifg=#00afd7 guibg=NONE guisp=NONE gui=NONE ctermfg=39 ctermbg=NONE cterm=NONE
 hi CursorLine guifg=NONE guibg=#808080 guisp=#808080 gui=NONE ctermfg=NONE ctermbg=8 cterm=NONE
 "hi Union -- no settings --
 "hi TabLineFill -- no settings --
@@ -72,7 +75,6 @@ hi VisualNOS guifg=#c000c0 guibg=NONE guisp=NONE gui=NONE ctermfg=5 ctermbg=NONE
 hi DiffDelete guifg=#303030 guibg=#444444 guisp=#444444 gui=NONE ctermfg=236 ctermbg=238 cterm=NONE
 hi ModeMsg guifg=#90916a guibg=NONE guisp=NONE gui=NONE ctermfg=101 ctermbg=NONE cterm=NONE
 hi CursorColumn guifg=NONE guibg=#808080 guisp=#808080 gui=NONE ctermfg=NONE ctermbg=8 cterm=NONE
-hi Define guifg=#afd7d7 guibg=NONE guisp=NONE gui=NONE ctermfg=4 ctermbg=NONE cterm=NONE
 hi Function guifg=#bdc7de guibg=NONE guisp=NONE gui=NONE ctermfg=19 ctermbg=NONE cterm=NONE
 hi FoldColumn guifg=#875faf guibg=#444444 guisp=#444444 gui=NONE ctermfg=97 ctermbg=238 cterm=NONE
 "hi EnumerationName -- no settings --
@@ -87,7 +89,6 @@ hi Cursor guifg=#121212 guibg=#87afaf guisp=#87afaf gui=NONE ctermfg=233 ctermbg
 hi Error guifg=#ff40ff guibg=#1c1c1c guisp=#1c1c1c gui=NONE ctermfg=13 ctermbg=234 cterm=NONE
 hi SpecialKey guifg=#afd7af guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
 hi Constant guifg=#9c7f9c guibg=NONE guisp=NONE gui=NONE ctermfg=247 ctermbg=NONE cterm=NONE
-"hi DefinedName -- no settings --
 hi Tag guifg=#00ff00 guibg=NONE guisp=NONE gui=NONE ctermfg=10 ctermbg=NONE cterm=NONE
 hi String guifg=#afd700 guibg=NONE guisp=NONE gui=NONE ctermfg=1 ctermbg=NONE cterm=NONE
 hi MatchParen cterm=bold ctermbg=NONE ctermfg=15
@@ -97,7 +98,6 @@ hi Repeat guifg=#87afd7 guibg=NONE guisp=NONE gui=NONE ctermfg=110 ctermbg=NONE 
 "hi CTagsClass -- no settings --
 hi Directory guifg=#d7d7d7 guibg=NONE guisp=NONE gui=NONE ctermfg=188 ctermbg=NONE cterm=NONE
 hi Structure guifg=#dadada guibg=NONE guisp=NONE gui=NONE ctermfg=253 ctermbg=NONE cterm=NONE
-hi Macro guifg=#afd7d7 guibg=NONE guisp=NONE gui=NONE ctermfg=4 ctermbg=NONE cterm=NONE
 hi Underlined guifg=#d7d7d7 guibg=NONE guisp=NONE gui=NONE ctermfg=188 ctermbg=NONE cterm=NONE
 hi DiffAdd guifg=#5f8787 guibg=#3a3a3a guisp=#3a3a3a gui=NONE ctermfg=66 ctermbg=237 cterm=NONE
 "hi TabLine -- no settings --

@@ -64,8 +64,8 @@ set incsearch
 set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
+"nnoremap <tab> %
+"vnoremap <tab> %
 
 " Line handling
 set wrap
@@ -82,7 +82,7 @@ set directory=~/.tmp/.vim,/tmp
 set noswapfile
 
 " Change leader key
-let mapleader="\`"
+let mapleader="`"
 
 " line separation appearance
 set fillchars+=vert:\.
