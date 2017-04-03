@@ -1,7 +1,9 @@
 " GUI
-set gfn=Ohsnap\ 11
+"set gfn=Ohsnap\ 11
 set go=aegm
 set guicursor=a:blinkon0 "n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor-blinkon0,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
+set guifont=Consolas
+set lines=50 columns=180
 
 " Colors
 set t_Co=256
@@ -29,6 +31,11 @@ set expandtab
 set mouse=a
 au BufRead,BufNewFile * exe "set ttymouse=xterm"
 
+"gui
+set guioptions-=e
+set guioptions-=m
+set guioptions-=T
+
 " misc
 set encoding=utf-8
 set scrolloff=3
@@ -54,7 +61,6 @@ nnoremap / /\v
 vnoremap / /\v
 set ignorecase
 set smartcase
-set gdefault
 set incsearch
 set showmatch
 set hlsearch
@@ -77,7 +83,7 @@ set directory=~/.tmp/.vim,/tmp
 set noswapfile
 
 " Change leader key
-let mapleader="\`"
+let mapleader="`"
 
 " line separation appearance
 set fillchars+=vert:\.
@@ -88,9 +94,9 @@ command CDC cd %:p:h
 
 
 " Use rainbow parenthesis for lisp editing
-au Syntax * RainbowParenthesesLoadRound
-map <leader>r :RainbowParenthesesToggleAll<CR>
-au FileType lisp,scheme :RainbowParenthesesToggleAll
+"au Syntax * RainbowParenthesesLoadRound
+"map <leader>r :RainbowParenthesesToggleAll<CR>
+"au FileType lisp,scheme :RainbowParenthesesToggleAll
 
 " Automatically save files when going out of focus
 au FocusLost * :wa
@@ -100,6 +106,8 @@ nnoremap<C-h> <C-w>h
 nnoremap<C-j> <C-w>j
 nnoremap<C-k> <C-w>k
 nnoremap<C-l> <C-w>l
+nnoremap tp :tabp<CR>
+nnoremap tn :tabn<CR>
 
 " Helper remap
 nnoremap ; :
@@ -108,6 +116,11 @@ nnoremap k gk
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 inoremap <F1> <ESC>
+
+nnoremap <S-k> {
+vnoremap <S-k> {
+nnoremap <S-j> }
+vnoremap <S-j> }
 
 "set ofu=syntaxcomplete#Complete
 
@@ -118,10 +131,16 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd BufRead,BufNewFile *.cpp,*.hpp,*.c,*.h syn match redOperator /[{}()\.\<\>\=\!\+\-\*\[\]]/ | hi link redOperator Operator
 
 " GLSL highlighting
-autocmd BufNewFile,BufRead *.fs,*.vs set syntax=glsl
+autocmd BufNewFile,BufRead *.glsl,*.fs,*.vs set syntax=glsl
 
 " GO highlighting
 au BufRead,BufNewFile *.go set filetype=go
+
+" Personal C/C++ types
+autocmd BufRead,BufNewFile *.cpp,*.hpp,*.c,*.h syn keyword Type real32 real64 int8 uint8 int16 uint16 int32 uint32 int64 uint64 
+
+" TODO & NOTE highlighting
+autocmd BufNewFile,BufRead *.cpp,*.hpp,*.c,*.h match tag /NOTE/
 
 " NERDTREE Options
 let NERDTreeIgnore=['\.o$', '\~$', 'tags']
@@ -153,3 +172,31 @@ map <C-x><F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q -f ~/.vim/tags
 set tags +=~/.vim/tags/gl
 set tags +=~/.vim/tags/glfw
 set tags +=~/.vim/tags/commontags
+
+
+" TABLINE
+function! Tabline()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    let tab = i + 1
+    let winnr = tabpagewinnr(tab)
+    let buflist = tabpagebuflist(tab)
+    let bufnr = buflist[winnr - 1]
+    let bufname = bufname(bufnr)
+    let bufmodified = getbufvar(bufnr, "&mod")
+
+    let s .= '%' . tab . 'T'
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    let s .= ' ' . tab .':'
+    let s .= (bufname != '' ? '['. fnamemodify(bufname, ':t') . '] ' : '[No Name] ')
+
+    if bufmodified
+      let s .= '[+] '
+    endif
+  endfor
+
+  let s .= '%#TabLineFill#'
+  return s
+endfunction
+set tabline=%!Tabline()
+
