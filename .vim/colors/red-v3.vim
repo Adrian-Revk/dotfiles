@@ -11,9 +11,9 @@ endif
 set t_Co=256
 let g:colors_name = "red-v3"
 
+hi Normal guifg=#8a8a8a guibg=#121212 guisp=#121212 gui=NONE ctermfg=243 ctermbg=233 cterm=NONE
+hi LineNr guifg=#3a3a3a guibg=#080808 guisp=#080808 gui=NONE ctermfg=237 ctermbg=232 cterm=NONE
 hi Comment guifg=#555555 guibg=NONE guisp=NONE gui=NONE ctermfg=240 ctermbg=NONE cterm=NONE
-hi Normal guifg=#8a8a8a guibg=#121212 guisp=#121212 gui=NONE ctermfg=243 ctermbg=NONE cterm=NONE
-hi LineNr guifg=#3a3a3a guibg=#080808 guisp=#080808 gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
 hi Type guifg=#bcbcbc guibg=NONE guisp=NONE gui=NONE ctermfg=250 ctermbg=NONE cterm=NONE
 hi StorageClass guifg=#bcbcbc guibg=NONE guisp=NONE gui=NONE ctermfg=250 ctermbg=NONE cterm=NONE
 hi Boolean guifg=#ff6060 guibg=NONE guisp=NONE gui=NONE ctermfg=203 ctermbg=NONE cterm=NONE
