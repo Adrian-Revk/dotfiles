@@ -29,7 +29,12 @@ set expandtab
 
 " complete mouse usage (and in screen too)
 set mouse=a
-au BufRead,BufNewFile * exe "set ttymouse=xterm"
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+"au BufRead,BufNewFile * exe "set ttymouse=xterm"
 
 "gui
 set guioptions-=e
@@ -65,8 +70,8 @@ set incsearch
 set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
+"nnoremap <tab> %
+"vnoremap <tab> %
 
 " Line handling
 set wrap
