@@ -5,3 +5,5 @@
 	autocrlf = input
 [alias]
 	st = status
+[credential "https://github.com"]
+    username = Adrien-radr
