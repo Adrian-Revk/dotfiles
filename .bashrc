@@ -9,14 +9,14 @@ xset r rate 150 20
 
 #===SHELL===#
 function parse_git_dirty {
-    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "*"
 }
 function parse_git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(parse_git_dirty)]/"
 }
 
-#export PROMPT_COMMAND='"\[$(tput setaf 5)\]┌─╼ \[$(tput setaf 4)\][\w]" "\n\[$(tput setaf 5)\]\[$(tput setaf 5)\]└────╼ \[$(tput setaf 9)\] ";'$PROMPT_COMMAND
-export PS1="\[$(tput setaf 4)\]┌─╼ \[$(tput setaf 1)\][\w] \[$(tput setaf 7)\]$(parse_git_branch) \n\[$(tput setaf 4)\]└────╼  \[$(tput sgr0)\]"
+export PS1='\[$(tput setaf 9)\]\u\[$(tput setaf 1)\] :: \[$(tput setaf 9)\]\w\[$(tput setaf 1)\]$(parse_git_branch)\[$(tput sgr0)\] '
+
 #===ALIASES===#
 	#===BASE===#
 		alias s='sudo'
@@ -39,6 +39,7 @@ export PS1="\[$(tput setaf 4)\]┌─╼ \[$(tput setaf 1)\][\w] \[$(tput setaf 
 		alias cl='clear'
         alias cdDev='cd /mnt/D/Adrien/Development'
         alias cdD='cd /mnt/D'
+        alias updatedb='sudo updatedb --prunepaths="/mnt" 2> /dev/null'
 
 	#===SCREEN==#
 		alias screenrad='screen -raAd'
