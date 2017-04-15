@@ -2,8 +2,8 @@
 "set gfn=Ohsnap\ 11
 set go=aegm
 set guicursor=a:blinkon0 "n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor-blinkon0,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
-set guifont=Consolas
-set lines=50 columns=180
+"set guifont=Consolas
+"set lines=50 columns=180
 
 " Colors
 set t_Co=256
@@ -75,7 +75,7 @@ nnoremap <leader><space> :noh<cr>
 
 " Line handling
 set wrap
-set textwidth=79
+set textwidth=99
 set formatoptions=tqrn1
 "set colorcolumn=85
 

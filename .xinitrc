@@ -1,47 +1,32 @@
-# ALL IS ALREADY DONE BY XFCE, dont uncomment if using xfce
+#!/bin/sh
 
-# Thunar Daemon
-thunar --daemon &
+# /etc/X11/xinit/xinitrc
+#
+# global xinitrc file, used by all X sessions started by xinit (startx)
 
-# URxvt Daemon
-urxvtd -q -f -o &
+# invoke global X session script
+#. /etc/X11/Xsession
 
-# Wicd
-wicd-client -t &
+#urxvtd -q -f -o &
 
-# Power manager
-(sleep 2 && xfce4-power-manager) &
-
-# MPD
-mpd &
-
-# conky
-conky &
-
-# Numlock
-numlockx on
-
-# layouts
 setxkbmap -layout us,ca
 setxkbmap -option grp:alt_shift_toggle
 
-# tablet layout
-xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" ScrollDistance 150
-xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" Button 1 "key shift"
-xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" Button 2 "key alt"
-xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" Button 3 "key control"
-xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" Button 4 "key space"
+synclient TapButton1=1
+synclient VertTwoFingerScroll=1
+#synclient HorizTwoFingerScroll=1
 
-# Front channel ALSA
-amixer -c 0 set Front 65%
-# AWESOME WM
-exec ck-launch-session dbus-launch awesome
+pactl set-sink-mute 1 0
+amixer set Master 15%
 
-# COMPIZ WM
-#unset LIBGL_ALWAYS_INDIRECT; exec ck-launch-session dbus-launch fusion-icon
+numlockx on
 
-# DWM launcher
-#exec ck-launch-session dbus-launch ~/.config/dwm/bin/startdwm
+#xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" ScrollDistance 150
+#xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" Button 1 "key shift"
+#xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" Button 2 "key alt"
+#xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" Button 3 "key control"
+#xsetwacom --set "Wacom Bamboo 16FG 4x5 Finger pad" Button 4 "key space"
 
-# XFCE4 LAUNCHED BY GDM3 DIRECTLY FROM INITTAB!!!!!!!!!!!!
-#exec ck-launch-session dbus-launch startxfce4
+
+#exec xterm
+exec ck-launch-session dbus-launch i3

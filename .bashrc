@@ -2,21 +2,10 @@
 [ -z "$PS1" ] && return
 
 #===PATH===#
-PATH=/home/red/.script:/usr/local/bin:$PATH
+export PATH=~/bin:$PATH
 
 # Cursor moving speed
 xset r rate 150 20
-
-#===COLORS===#
-	BLANC='\[\033[37m\]'
-	VERT='\[\033[32m\]'
-	VIOLET='\[\033[35m\]'
-	CYAN='\[\033[36m\]'
-	GRAS='\[\033[01m\]'
-	NORM='\[\033[00m\]'
-	NOIR='\[\033[30m\]'
-	JAUNE='\[\033[33m\]'
-#===========#
 
 #===SHELL===#
 function parse_git_dirty {
@@ -26,41 +15,30 @@ function parse_git_branch {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 
-
-#export PS1="\[$(tput setaf 5)\]┌─╼ \[$(tput setaf 4)\][\w]\n\[$(tput setaf 5)\]\[$(tput setaf 5)\]└────╼ \[$(tput setaf 9)\]"
-export PROMPT_COMMAND='__posh_git_ps1 "\[$(tput setaf 5)\]┌─╼ \[$(tput setaf 4)\][\w]" "\n\[$(tput setaf 5)\]\[$(tput setaf 5)\]└────╼ \[$(tput setaf 9)\] ";'$PROMPT_COMMAND
-#export PS1="$NOIR» ${JAUNE}rev${NOIR}${GRAS}╺─╸($NORM$JAUNE\W$NOIR$GRAS)$NORM$CYAN\$(parse_git_branch)  $NORM"
-#export PS1="$BLANC($VERT\w$BLANC)\$(parse_git_branch)$NORM "
-
+#export PROMPT_COMMAND='"\[$(tput setaf 5)\]┌─╼ \[$(tput setaf 4)\][\w]" "\n\[$(tput setaf 5)\]\[$(tput setaf 5)\]└────╼ \[$(tput setaf 9)\] ";'$PROMPT_COMMAND
+export PS1="\[$(tput setaf 4)\]┌─╼ \[$(tput setaf 1)\][\w] \[$(tput setaf 7)\]$(parse_git_branch) \n\[$(tput setaf 4)\]└────╼  \[$(tput sgr0)\]"
 #===ALIASES===#
 	#===BASE===#
 		alias s='sudo'
-		alias cdC='cd /mnt/C'
-		alias cdData='cd /mnt/Data'
-		alias cddev='cd /mnt/Data/dev'
 		alias ls='ls --color=auto'
 		alias la='ls -a'
 		alias ll='ls -lh'
 		alias lla='ls -lha'
-		alias cp='sudo cp -vi'
+		alias cp='cp -vi'
 	        alias rmr='rm -r'
-		alias cpr='sudo cp -rvi'
+		alias cpr='cp -rvi'
 		alias skdir='sudo mkdir'
 		alias md='mkdir'
-		alias mv='sudo mv -vi'
+		alias mv='mv -vi'
 		alias snano='sudo nano'
-		alias ps='ps U revk -o "| %p | " -orss -o " | %a"  --sort rss'
 		alias vi='vim'
 		alias svi='sudo vim'
-		alias ed='gedit'
 		alias ..='cd ..'
 		alias ...='cd ../..'
 		alias ....='cd ../../..'
 		alias cl='clear'
-		alias kill='kill -9'
-
-        alias reboot='sudo reboot'
-        alias halt='sudo halt'
+        alias cdDev='cd /mnt/D/Adrien/Development'
+        alias cdD='cd /mnt/D'
 
 	#===SCREEN==#
 		alias screenrad='screen -raAd'
@@ -72,8 +50,8 @@ export PROMPT_COMMAND='__posh_git_ps1 "\[$(tput setaf 5)\]┌─╼ \[$(tput set
         alias tmuxrad='tmux -2 attach -t'
 
 	#===PERSO===#
-		alias mine='sudo chown -hR adrien:adrien'
-		alias proc='ps | grep -i'
+		alias mine='sudo chown -hR radr:radr'
+		alias proc='ps -A | grep -i'
 		alias mntiso='sudo mount -o loop -t iso9660'
 		alias wall='feh --bg-scale'
 
@@ -86,59 +64,26 @@ export PROMPT_COMMAND='__posh_git_ps1 "\[$(tput setaf 5)\]┌─╼ \[$(tput set
 		alias emclean='sudo eclean'
 
     #===APTITUDE===#
-        alias aptin='sudo apt-get install'
-        alias aptrm='sudo apt-get remove'
-        alias aptsrc='apt-cache search'
-        alias aptupdate='sudo apt-get update'
-        alias aptupgrade='sudo apt-get upgrade'
-        alias aptdupgrade='sudo apt-get dist-upgrade'
+        alias aptin='sudo apt install'
+        alias aptrm='sudo apt remove'
+        alias aptsrc='sudo apt search'
+        alias aptupdate='sudo apt update'
+        alias aptupgrade='sudo apt upgrade'
 
 	#===PACMAN===#
-		alias pacupdate='yaourt -Sy'
-		alias pacupgrade='yaourt -Syu'
-		alias pacin='yaourt -S'
-		alias pacsrc='yaourt'
-		alias pacrm='yaourt -R'
+		#alias pacupdate='yaourt -Sy'
+		#alias pacupgrade='yaourt -Syu'
+		#alias pacin='yaourt -S'
+		#alias pacsrc='yaourt'
+		#alias pacrm='yaourt -R'
 		#alias pacclear='sudo apt-get clean; sudo apt-get autoremove'
-		alias pacobsolete='sudo pacman-color -Qdt'
+		#alias pacobsolete='sudo pacman-color -Qdt'
 
     #===GIT===#
         alias gitlog='git log --graph --decorate'
                 
-	#===SERVER===#
-		#alias alcheckout='svn co https://alzor.svn.sourceforge.net/svnroot/alzor /home/oox/Dev/C++/alzor'
-		#alias alupdate='svn update /home/oox/Dev/C++/alzor'
-		#alias alcommit='svn ci /home/oox/Dev/C++/alzor'
         
 #===FONCTIONS===#
-    #Cree un script bash avec le nom donné en argument
-	function nscript(){
-		if [ -z $1 ]
-		then
-			echo "La commande nécessite un paramètre"
-		else
-			echo "#!/bin/bash" > $1
-			echo "#  $1" >> $1
-			echo "#" >> $1
-			echo "" >> $1
-			chmod +x $1
-			mine $1
-			echo "Script $1 crée"
-		fi
-
-	}
-
-    #Simple compilation fichier .c passé en parametre
-	function compil(){
-		if [ -z $1 ]
-		then
-			echo "La commande nécessite un fichier en C à compiler"
-		else
-			gcc $1.c -o $1.e
-			echo "Executable $1 crée"
-		fi
-	}
-
     #Reminder
     #exemple: remindme 10 "pizza!"
     function remindme(){
@@ -216,8 +161,3 @@ export LD_LIBRARY_PATH=.
 if [ -n "$DISPLAY" ]; then
      BROWSER=chromium
 fi
-
-export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
-
-# bash git support
-source ~/.git-prompt.sh

@@ -1,3 +1,7 @@
 [user]
 	name = Adrien 'radr' Dubouchet
 	email = ra.dubouchet@gmail.com
+[core]
+	autocrlf = input
+[alias]
+	st = status
