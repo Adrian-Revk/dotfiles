@@ -184,7 +184,7 @@ floating_maximum_size -1 x -1
 
 # class                 border  backgr. text          indicator child_border
 client.focused          #121212 #121212 $txt-ug-color #444444   #444444
-client.focused_inactive #121212 #121212 $txt-fg-color #444444   #444444
+client.focused_inactive #121212 #121212 $txt-ug-color #444444   #444444
 client.unfocused        #121212 #121212 $txt-bg-color #444444   #444444
 client.urgent           #121212 #121212 $txt-ug-color #444444   #444444
 
