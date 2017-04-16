@@ -31,4 +31,5 @@ numlockx on
 
 
 #exec xterm
-exec ck-launch-session dbus-launch i3
+#exec ck-launch-session dbus-launch i3
+exec i3

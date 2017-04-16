@@ -47,6 +47,8 @@ bindsym $mod+r exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+bindsym $mod+Tab focus left
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -98,24 +100,24 @@ bindsym $mod+a focus parent
 bindsym $mod+Ctrl+a focus child
 
 # switch to workspace
-bindsym $mod+1 workspace main
-bindsym $mod+2 workspace www
-bindsym $mod+3 workspace dev
-bindsym $mod+4 workspace misc
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
+bindsym $mod+1 workspace www
+bindsym $mod+2 workspace dev
+bindsym $mod+3 workspace misc
+bindsym $mod+4 workspace z
+bindsym $mod+5 workspace zz
+bindsym $mod+6 workspace zzz
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace main
-bindsym $mod+Ctrl+2 move container to workspace www
-bindsym $mod+Ctrl+3 move container to workspace dev
-bindsym $mod+Ctrl+4 move container to workspace misc
-bindsym $mod+Ctrl+5 move container to workspace 5
-bindsym $mod+Ctrl+6 move container to workspace 6
+bindsym $mod+Ctrl+1 move container to workspace www
+bindsym $mod+Ctrl+2 move container to workspace dev
+bindsym $mod+Ctrl+3 move container to workspace misc
+bindsym $mod+Ctrl+4 move container to workspace z
+bindsym $mod+Ctrl+5 move container to workspace zz
+bindsym $mod+Ctrl+6 move container to workspace zzz
 bindsym $mod+Ctrl+7 move container to workspace 7
 bindsym $mod+Ctrl+8 move container to workspace 8
 bindsym $mod+Ctrl+9 move container to workspace 9
@@ -136,16 +138,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -168,8 +170,8 @@ bindsym Mod4+l exec i3lock --color "$bg-color"
 # ###########################################################################
 # Rules
 
-for_window [workspace="main"] floating enable
 for_window [workspace="www"] tabbed enable
+for_window [workspace="dev"] tabbed enable
 for_window [workspace="misc"] floating enable
 assign [class="Chromium"] www
 
@@ -215,9 +217,10 @@ exec_always "killall compton; compton -cGb -r 3 -l -5 -t -5"
 exec "lxpolkit"
 exec "pcmanfm -d"
 exec "xfce4-power-manager"
+exec "wicd-gtk -t"
+exec "pnmixer"
 
 # Default Workspace
-exec --no-startup-id "i3-msg 'workspace main; exec xfce4-terminal'"
-exec --no-startup-id "sleep 0.2; i3-msg 'workspace www; exec chromium'"
-exec --no-startup-id "sleep 0.5; i3-msg 'workspace dev; exec xfce4-terminal'"
-exec --no-startup-id "sleep 0.7; i3-msg 'workspace misc; exec deadbeef; workspace main'"
+exec --no-startup-id "i3-msg 'workspace www; exec chromium'"
+exec --no-startup-id "sleep 0.3; i3-msg 'workspace dev; exec xfce4-terminal'"
+exec --no-startup-id "sleep 0.5; i3-msg 'workspace misc'"
