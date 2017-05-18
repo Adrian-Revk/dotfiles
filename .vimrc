@@ -75,7 +75,7 @@ nnoremap <leader><space> :noh<cr>
 
 " Line handling
 set wrap
-set textwidth=99
+"set textwidth=99
 set formatoptions=tqrn1
 "set colorcolumn=85
 
@@ -88,7 +88,11 @@ set directory=~/.tmp/.vim,/tmp
 set noswapfile
 
 " Change leader key
-let mapleader="`"
+let mapleader="\\"
+nnoremap <leader>m :make<cr><cr><cr>
+nnoremap <leader>\ :cw<cr>
+nnoremap <leader>[ :cp<cr>
+nnoremap <leader>] :cn<cr>
 
 " line separation appearance
 set fillchars+=vert:\.
