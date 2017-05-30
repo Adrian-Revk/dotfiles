@@ -2,8 +2,8 @@
 "set gfn=Ohsnap\ 11
 set go=aegm
 set guicursor=a:blinkon0 "n-v-c:block-Cursor-blinkon0,ve:ver35-Cursor,o:hor50-Cursor,i-ci:ver25-Cursor-blinkon0,r-cr:hor20-Cursor/lCursor,sm:block-Cursor-blinkwait175-blinkoff150-blinkon175
-"set guifont=Consolas
-"set lines=50 columns=180
+" set guifont=Consolas
+" set lines=50 columns=180
 
 " Colors
 set t_Co=256
@@ -12,6 +12,8 @@ colorscheme red-v3 "classytouch
 
 " Enable plugins
 set nocp
+
+set rtp+=~/.fzf
 
 " no undo file
 set noundofile
@@ -99,7 +101,7 @@ set fillchars+=vert:\.
 
 " Commands
 "command CDDEV cd /mnt/D/dev
-command CDC cd %:p:h
+command! CDC cd %:p:h
 
 
 " Use rainbow parenthesis for lisp editing
@@ -151,6 +153,9 @@ autocmd BufRead,BufNewFile *.cpp,*.hpp,*.c,*.h syn keyword Type real32 real64 in
 " TODO & NOTE highlighting
 autocmd BufNewFile,BufRead *.cpp,*.hpp,*.c,*.h match tag /NOTE/
 
+" NASM highlighting
+autocmd BufNewFile,BufRead *.asm set syntax=nasm
+
 " NERDTREE Options
 let NERDTreeIgnore=['\.o$', '\~$', 'tags']
 
@@ -182,6 +187,12 @@ set tags +=~/.vim/tags/gl
 set tags +=~/.vim/tags/glfw
 set tags +=~/.vim/tags/commontags
 
+
+function! CtagsForDir(directory)
+    silent execute '!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q' a:directory
+    execute 'redraw!'
+endfunction
+command! -nargs=* BT call CtagsForDir('<args>')
 
 " TABLINE
 function! Tabline()
