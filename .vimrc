@@ -156,6 +156,10 @@ autocmd BufNewFile,BufRead *.cpp,*.hpp,*.c,*.h match tag /NOTE/
 " NASM highlighting
 autocmd BufNewFile,BufRead *.asm set syntax=nasm
 
+" Auto fold loading/saving when opening/closing files
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
 " NERDTREE Options
 let NERDTreeIgnore=['\.o$', '\~$', 'tags']
 
